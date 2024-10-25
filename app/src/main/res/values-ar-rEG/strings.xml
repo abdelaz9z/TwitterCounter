@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">عداد تويتر</string>
+    <string name="tweet_posted_successfully">تم نشر التغريدة بنجاح!</string>
+    <string name="error_posting_tweet">خطأ في نشر التغريدة.</string>
+    <string name="please_enter_a_tweet">يرجى إدخال تغريدة.</string>
+    <string name="something_went_wrong">حدث خطأ ما</string>
+    <string name="copied_text">النص المنسوخ</string>
+    <string name="copy_text">نسخ النص</string>
+    <string name="copied">تم النسخ</string>
+    <string name="clear_text">مسح النص</string>
+    <string name="characters_typed">عدد الأحرف المدخلة</string>
+    <string name="characters_remaining">عدد الأحرف المتبقية</string>
+    <string name="post_tweet">نشر التغريدة</string>
+    <string name="start_typing_you_can_enter_up_to_characters">ابدأ الكتابة! يمكنك إدخال ما يصل إلى %1$s حرف</string>
+    <string name="twitter_character_count">عدد أحرف تويتر</string>
+    <string name="next">التالي</string>
+    <string name="twitter_logo">شعار تويتر</string>
+</resources>
