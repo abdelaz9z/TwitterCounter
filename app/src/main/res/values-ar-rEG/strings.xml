@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">عداد تويتر</string>
+    <string name="not_connected">⚠️ لست متصلاً بالإنترنت</string>
     <string name="tweet_posted_successfully">تم نشر التغريدة بنجاح!</string>
     <string name="error_posting_tweet">خطأ في نشر التغريدة.</string>
     <string name="please_enter_a_tweet">يرجى إدخال تغريدة.</string>
