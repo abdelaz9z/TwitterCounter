@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.casecode.twittercounter.R
 import com.casecode.twittercounter.domain.usecase.PostTweetUseCase
+import com.casecode.twittercounter.ui.utils.NetworkMonitor
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -22,8 +23,12 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class TwitterViewModel @Inject constructor(
-    private val postTweetUseCase: PostTweetUseCase
+    private val postTweetUseCase: PostTweetUseCase,
+    private val networkMonitor: NetworkMonitor
 ) : ViewModel() {
+
+    // State for network connectivity
+    private val _isOnline = MutableStateFlow(false)
 
     // Mutable state for the tweet text input
     private val _tweetText = MutableStateFlow("")
@@ -35,6 +40,12 @@ class TwitterViewModel @Inject constructor(
 
     private val _isPosting = MutableStateFlow(false)
     val isPosting: StateFlow<Boolean> = _isPosting.asStateFlow()
+
+    init {
+        viewModelScope.launch {
+            networkMonitor.isOnline.collect { isOnline -> _isOnline.value = isOnline }
+        }
+    }
 
     /**
      * Updates the tweet text input.
@@ -74,6 +85,12 @@ class TwitterViewModel @Inject constructor(
      * Displays appropriate messages based on the success or failure of the operation.
      */
     fun postTweet() {
+
+        if (!_isOnline.value) {
+            showPostResponse(R.string.not_connected)
+            return
+        }
+
         val text = _tweetText.value
         if (text.isNotBlank()) {
             viewModelScope.launch {
